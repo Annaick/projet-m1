@@ -8,7 +8,7 @@ from sqlmodel import Session, SQLModel, create_engine
 from app import models  # noqa: F401  (enregistre les tables)
 from app.config import settings
 
-engine = create_engine(settings.database_url, connect_args={"check_same_thread": False})
+engine = create_engine(settings.database_url, connect_args={"check_same_thread": False, "timeout": 30})
 
 
 @event.listens_for(Engine, "connect")

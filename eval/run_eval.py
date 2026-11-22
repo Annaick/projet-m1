@@ -28,7 +28,7 @@ from sqlmodel import Session  # noqa: E402
 
 from app.db import engine, init_db  # noqa: E402
 from app.models import AISettings  # noqa: E402
-from app.rag import answer, ollama  # noqa: E402
+from app.rag import answer, ollama, vectorstore  # noqa: E402
 from app.rag.bm25 import BM25Index  # noqa: E402
 
 KS = [1, 3, 5, 10]
@@ -270,6 +270,7 @@ def main() -> int:
     (out_dir / "rapport.md").write_text(report, encoding="utf-8")
     print("\n" + report)
     print(f"Résultats : {out_dir}")
+    vectorstore.close()
     return 0
 
 

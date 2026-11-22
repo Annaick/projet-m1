@@ -1,5 +1,6 @@
 """Base de connaissances : sources (fichiers, texte riche, FAQ) et fragments."""
 import re
+import threading
 import uuid
 from pathlib import Path
 
@@ -43,8 +44,12 @@ class SourceOut(BaseModel):
     answer: str | None = None
 
 
+_indexing_lock = threading.Lock()
+
+
 def index_in_background(source_id: int) -> None:
-    with Session(db.engine) as session:
+    """Une indexation à la fois : Ollama traite les requêtes en série de toute façon."""
+    with _indexing_lock, Session(db.engine) as session:
         ingestion.index_source(session, source_id)
 
 

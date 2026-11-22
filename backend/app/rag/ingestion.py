@@ -39,11 +39,12 @@ def index_source(session: Session, source_id: int) -> Source:
         if not pieces:
             raise ValueError("Aucun texte exploitable dans cette source")
 
+        # Embeddings calculés avant toute écriture : la base SQLite n'est pas verrouillée pendant ce temps
+        vectors = embeddings.embed_documents([p.text for p in pieces], [source.title] * len(pieces))
+
         chunks = [Chunk(source_id=source_id, position=i, text=p.text, page=p.page) for i, p in enumerate(pieces)]
         session.add_all(chunks)
         session.flush()  # attribue les id
-
-        vectors = embeddings.embed_documents([c.text for c in chunks], [source.title] * len(chunks))
         payloads = [
             {"chunk_id": c.id, "source_id": source_id, "source_type": source.type.value, "title": source.title, "page": c.page}
             for c in chunks

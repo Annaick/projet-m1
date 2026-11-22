@@ -22,6 +22,13 @@ def context_size(messages: list[dict]) -> int:
     return int(min(16384, max(4096, -(-needed // 2048) * 2048)))
 
 
+def _options(**extra) -> dict:
+    options = {k: v for k, v in extra.items() if v is not None}
+    if settings.ollama_num_gpu is not None:
+        options["num_gpu"] = settings.ollama_num_gpu
+    return options
+
+
 def _post(path: str, payload: dict, timeout: float = 300) -> dict:
     try:
         response = httpx.post(f"{settings.ollama_url}{path}", json=payload, timeout=timeout)
@@ -34,7 +41,7 @@ def _post(path: str, payload: dict, timeout: float = 300) -> dict:
 def embed(texts: list[str], batch_size: int = 16) -> list[list[float]]:
     vectors: list[list[float]] = []
     for i in range(0, len(texts), batch_size):
-        data = _post("/api/embed", {"model": settings.embedding_model, "input": texts[i : i + batch_size], "keep_alive": KEEP_ALIVE})
+        data = _post("/api/embed", {"model": settings.embedding_model, "input": texts[i : i + batch_size], "keep_alive": KEEP_ALIVE, "options": _options()})
         vectors.extend(data["embeddings"])
     return vectors
 
@@ -45,7 +52,7 @@ def chat_stream(messages: list[dict], model: str, temperature: float) -> Iterato
         "messages": messages,
         "stream": True,
         "keep_alive": KEEP_ALIVE,
-        "options": {"temperature": temperature, "num_ctx": context_size(messages)},
+        "options": _options(temperature=temperature, num_ctx=context_size(messages)),
     }
     try:
         with httpx.stream("POST", f"{settings.ollama_url}/api/chat", json=payload, timeout=600) as response:

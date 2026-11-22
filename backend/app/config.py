@@ -13,14 +13,18 @@ class Settings(BaseSettings):
     llm_model: str = "gemma3:4b"
     embedding_model: str = "embeddinggemma"
     storage_dir: Path = Path("storage")
+    # Couches du modèle envoyées sur la carte graphique. Vide = choix d'Ollama ; 0 = processeur seul
+    # (nécessaire sur les petites cartes, ex. GTX 1050, où le chargement GPU plante).
+    ollama_num_gpu: int | None = None
 
-    # Découpage (en mots, approximation des tokens : 1 token ≈ 0,75 mot en français)
-    chunk_size: int = 380
-    chunk_overlap: int = 60
+    # Découpage en mots (≈ 270 tokens). Choisi d'après l'évaluation : meilleurs scores qu'à 380 mots,
+    # prompts plus courts (important quand le LLM tourne sur le processeur)
+    chunk_size: int = 200
+    chunk_overlap: int = 40
 
     # Valeurs par défaut des paramètres IA (modifiables ensuite dans l'interface)
     default_top_k: int = 4
-    default_score_threshold: float = 0.45
+    default_score_threshold: float = 0.40
     default_temperature: float = 0.2
 
     @property

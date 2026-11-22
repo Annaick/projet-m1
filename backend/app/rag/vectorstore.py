@@ -82,3 +82,10 @@ def search(vector: list[float], limit: int) -> list[Hit]:
 @_locked
 def count() -> int:
     return get_client().count(COLLECTION).count if _exists() else 0
+
+
+def close() -> None:
+    global _client
+    if _client is not None:
+        _client.close()
+        _client = None
