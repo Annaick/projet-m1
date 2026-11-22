@@ -1,6 +1,7 @@
 """Banc d'évaluation : compare 3 configurations sur les 25 questions de référence.
 
-  llm   : LLM seul, sans recherche documentaire (baseline exigée par l'énoncé)
+  libre : LLM seul, sans consigne de refus (montre les hallucinations d'un LLM « nu »)
+  llm   : LLM seul, sans recherche documentaire, avec consigne de refus (baseline exigée par l'énoncé)
   bm25  : recherche lexicale BM25 + LLM
   rag   : recherche sémantique (Qdrant) + seuil + LLM : la configuration de l'application
 
@@ -34,6 +35,7 @@ from app.rag.bm25 import BM25Index  # noqa: E402
 KS = [1, 3, 5, 10]
 THRESHOLDS = [round(0.30 + 0.05 * i, 2) for i in range(9)]  # 0,30 → 0,70
 
+LLM_FREE_SYSTEM = "Tu es l'assistant interne de l'entreprise Brumeval. Réponds en français, de façon concise."
 LLM_ONLY_SYSTEM = (
     "Tu es l'assistant documentaire interne de l'entreprise Brumeval. Réponds à la question de l'utilisateur en français. "
     f"Si tu ne connais pas la réponse, réponds exactement : « {answer.REFUSAL} »"
@@ -99,7 +101,10 @@ def generate(messages: list[dict], ai: AISettings) -> str:
 def run_config(config: str, session: Session, ai: AISettings, q: dict, bm25: BM25Index) -> dict:
     started = time.perf_counter()
     extracts, cited = [], []
-    if config == "llm":
+    if config == "libre":
+        text = generate([{"role": "system", "content": LLM_FREE_SYSTEM}, {"role": "user", "content": q["question"]}], ai)
+        answered = not answer.is_refusal(text)
+    elif config == "llm":
         text = generate([{"role": "system", "content": LLM_ONLY_SYSTEM}, {"role": "user", "content": q["question"]}], ai)
         answered = not answer.is_refusal(text)
     elif config == "bm25":
@@ -184,7 +189,7 @@ def markdown_report(meta: dict, retrieval: dict, summaries: dict) -> str:
     for row in retrieval["seuils"]:
         lines.append(f"| {row['seuil']:.2f} | {pct(row['dans_corpus_au_dessus'])} | {pct(row['hors_corpus_refusees'])} |")
     if summaries:
-        labels = {"llm": "LLM seul", "bm25": "BM25 + LLM", "rag": "RAG sémantique"}
+        labels = {"libre": "LLM seul, sans consigne", "llm": "LLM seul", "bm25": "BM25 + LLM", "rag": "RAG sémantique"}
         lines += [
             "",
             "## Réponses générées",
@@ -214,7 +219,7 @@ def markdown_report(meta: dict, retrieval: dict, summaries: dict) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--configs", default="llm,bm25,rag")
+    parser.add_argument("--configs", default="libre,llm,bm25,rag")
     parser.add_argument("--retrieval-only", action="store_true")
     parser.add_argument("--limit", type=int, default=None, help="nombre de questions (essais rapides)")
     parser.add_argument("--questions", default=str(ROOT / "eval" / "questions.json"))

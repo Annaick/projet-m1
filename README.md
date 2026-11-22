@@ -56,7 +56,31 @@ data/
 docs/         plan du projet, architecture, maquettes (design/), backlog
 ```
 
-## Installation
+## Démarrage rapide (Windows)
+
+Prérequis : **Python 3.11+** et **Git**. Ollama est installé par le script s'il manque.
+
+```powershell
+git clone https://github.com/Annaick/projet-m1.git
+cd projet-m1
+.\install.cmd     # une fois : environnement, dépendances, .env, modèles (~4 Go), tests
+.\start.cmd       # Ollama + API + interface, charge le corpus de démo au 1er lancement, ouvre le navigateur
+.\stop.cmd        # arrête l'API et l'interface
+```
+
+Les `.cmd` se lancent aussi d'un double-clic. Ils appellent les scripts de `scripts/` :
+
+| Script | Options utiles |
+|---|---|
+| `scripts\install.ps1` | `-CpuOnly` (forcer le processeur), `-SkipModels` |
+| `scripts\start.ps1` | `-ResetCorpus` (recharger le corpus de démo), `-NoCorpus`, `-NoBrowser` |
+| `scripts\stop.ps1` | |
+| `scripts\eval.ps1` | arrête l'API, lance l'évaluation (`--retrieval-only`, `--configs rag --limit 5`…), relance l'API |
+
+Si le modèle plante au chargement sur une petite carte graphique (cas d'une GTX 1050 à 2 Go), `install` le
+détecte et passe en mode processeur (`OLLAMA_NUM_GPU=0` dans `.env`). Les journaux sont dans `storage\logs\`.
+
+## Installation manuelle
 
 Prérequis : **Python 3.11 ou plus récent**, **Git**, **[Ollama](https://ollama.com/download)**.
 

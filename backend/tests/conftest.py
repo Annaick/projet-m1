@@ -66,7 +66,10 @@ def client(engine, monkeypatch):
     from app.main import app
     from app.rag import answer
 
+    from app.rag import indexer
+
     monkeypatch.setattr(db, "engine", engine)
+    monkeypatch.setattr(indexer, "SYNCHRONOUS", True)
     replies = {"text": "Selon le règlement, vous avez 25 jours de congés [1]."}
 
     def fake_chat(messages, model, temperature):

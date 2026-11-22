@@ -95,7 +95,7 @@ class AISettings(SQLModel, table=True):
     llm_model: str = "gemma3:4b"
     temperature: float = 0.2
     top_k: int = 3
-    score_threshold: float = 0.40
+    score_threshold: float = 0.30
 
 
 class KnowledgeGap(SQLModel, table=True):

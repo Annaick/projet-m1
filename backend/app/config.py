@@ -24,7 +24,7 @@ class Settings(BaseSettings):
 
     # Valeurs par défaut des paramètres IA (modifiables ensuite dans l'interface)
     default_top_k: int = 3
-    default_score_threshold: float = 0.40
+    default_score_threshold: float = 0.30
     default_temperature: float = 0.2
 
     @property

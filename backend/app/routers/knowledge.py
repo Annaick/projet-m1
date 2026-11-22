@@ -1,10 +1,9 @@
 """Base de connaissances : sources (fichiers, texte riche, FAQ) et fragments."""
 import re
-import threading
 import uuid
 from pathlib import Path
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, HTTPException, UploadFile
 from pydantic import BaseModel, Field
 from sqlalchemy import func
 from sqlmodel import Session, select
@@ -12,7 +11,7 @@ from sqlmodel import Session, select
 from app import db
 from app.config import settings
 from app.models import Chunk, Source, SourceStatus, SourceType
-from app.rag import ingestion
+from app.rag import indexer, ingestion
 from app.rag.extraction import SUPPORTED_EXTENSIONS
 
 router = APIRouter(tags=["base de connaissances"])
@@ -42,15 +41,6 @@ class SourceOut(BaseModel):
     content: str | None = None
     question: str | None = None
     answer: str | None = None
-
-
-_indexing_lock = threading.Lock()
-
-
-def index_in_background(source_id: int) -> None:
-    """Une indexation à la fois : Ollama traite les requêtes en série de toute façon."""
-    with _indexing_lock, Session(db.engine) as session:
-        ingestion.index_source(session, source_id)
 
 
 def _chunk_counts(session: Session) -> dict[int, int]:
@@ -122,7 +112,7 @@ def source_chunks(source_id: int, session: Session = Depends(db.get_session)) ->
 
 
 @router.post("/knowledge/sources/files", response_model=list[SourceOut], status_code=201)
-async def upload_files(files: list[UploadFile], background: BackgroundTasks, session: Session = Depends(db.get_session)):
+async def upload_files(files: list[UploadFile], session: Session = Depends(db.get_session)):
     created = []
     for upload in files:
         name = upload.filename or "document"
@@ -137,34 +127,34 @@ async def upload_files(files: list[UploadFile], background: BackgroundTasks, ses
         session.add(source)
         session.commit()
         session.refresh(source)
-        background.add_task(index_in_background, source.id)
+        indexer.enqueue(source.id)
         created.append(_out(source, 0))
     return created
 
 
 @router.post("/knowledge/sources/richtext", response_model=SourceOut, status_code=201)
-def add_richtext(body: RichTextIn, background: BackgroundTasks, session: Session = Depends(db.get_session)):
+def add_richtext(body: RichTextIn, session: Session = Depends(db.get_session)):
     source = Source(type=SourceType.richtext, title=body.title.strip(), content=body.content)
     session.add(source)
     session.commit()
     session.refresh(source)
-    background.add_task(index_in_background, source.id)
+    indexer.enqueue(source.id)
     return _out(source, 0)
 
 
 @router.post("/knowledge/sources/faq", response_model=SourceOut, status_code=201)
-def add_faq(body: FaqIn, background: BackgroundTasks, session: Session = Depends(db.get_session)):
+def add_faq(body: FaqIn, session: Session = Depends(db.get_session)):
     question = body.question.strip()
     source = Source(type=SourceType.faq, title=question[:200], question=question, answer=body.answer.strip())
     session.add(source)
     session.commit()
     session.refresh(source)
-    background.add_task(index_in_background, source.id)
+    indexer.enqueue(source.id)
     return _out(source, 0)
 
 
 @router.put("/knowledge/sources/{source_id}", response_model=SourceOut)
-def update_source(source_id: int, body: dict, background: BackgroundTasks, session: Session = Depends(db.get_session)):
+def update_source(source_id: int, body: dict, session: Session = Depends(db.get_session)):
     """Modifie un texte riche ou une FAQ, puis réindexe."""
     source = session.get(Source, source_id)
     if source is None:
@@ -181,12 +171,12 @@ def update_source(source_id: int, body: dict, background: BackgroundTasks, sessi
     session.add(source)
     session.commit()
     session.refresh(source)
-    background.add_task(index_in_background, source.id)
+    indexer.enqueue(source.id)
     return _out(source, 0, full=True)
 
 
 @router.post("/knowledge/sources/{source_id}/reindex", response_model=SourceOut)
-def reindex(source_id: int, background: BackgroundTasks, session: Session = Depends(db.get_session)):
+def reindex(source_id: int, session: Session = Depends(db.get_session)):
     source = session.get(Source, source_id)
     if source is None:
         raise HTTPException(404, "Source introuvable")
@@ -194,7 +184,7 @@ def reindex(source_id: int, background: BackgroundTasks, session: Session = Depe
     session.add(source)
     session.commit()
     session.refresh(source)
-    background.add_task(index_in_background, source.id)
+    indexer.enqueue(source.id)
     return _out(source, 0)
 
 

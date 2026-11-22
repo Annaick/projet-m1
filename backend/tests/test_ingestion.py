@@ -113,3 +113,20 @@ def test_suppression_nettoie_partout(session, tmp_path: Path):
     assert session.exec(select(Chunk)).all() == []
     assert vectorstore.count() == 0
     assert not path.exists()
+
+
+def test_tableaux_valeurs_associees_aux_colonnes(tmp_path: Path):
+    from app.rag.extraction import table_to_lines
+
+    rows = [["Dépense", "Province", "Paris"], ["Repas", "20,50 €", "25 €"]]
+    assert table_to_lines(rows) == ["Repas — Province : 20,50 € ; Paris : 25 €"]
+
+    d = docx.Document()
+    d.add_paragraph("Avant le tableau.")
+    table = d.add_table(rows=2, cols=2)
+    for (r, c), text in {(0, 0): "Événement", (0, 1): "Durée", (1, 0): "Mariage", (1, 1): "5 jours"}.items():
+        table.cell(r, c).text = text
+    d.add_paragraph("Après le tableau.")
+    d.save(tmp_path / "t.docx")
+    text = extract_file(tmp_path / "t.docx")[0].text
+    assert text.index("Avant") < text.index("Mariage — Durée : 5 jours") < text.index("Après")

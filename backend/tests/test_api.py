@@ -120,3 +120,15 @@ def test_parametres(client):
     response = client.put("/settings", json={**current, "tone": "décontracté", "top_k": 6})
     assert response.status_code == 200 and response.json()["top_k"] == 6
     assert client.put("/settings", json={**current, "top_k": 0}).status_code == 422
+
+
+def test_vingt_envois_d_affilee_avec_la_file_reelle(client, monkeypatch):
+    """Régression : avec les BackgroundTasks, ~15 envois saturaient le pool de connexions SQLite."""
+    from app.rag import indexer
+
+    monkeypatch.setattr(indexer, "SYNCHRONOUS", False)
+    for i in range(20):
+        assert client.post("/knowledge/sources/faq", json={"question": f"Question {i} ?", "answer": f"Réponse {i}."}).status_code == 201
+    indexer.wait_idle()
+    summary = client.get("/knowledge/summary").json()
+    assert summary["by_status"]["indexed"] == 20 and summary["chunks"] == 20
