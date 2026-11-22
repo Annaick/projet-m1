@@ -1,0 +1,707 @@
+{
+  "meta": {
+    "date": "22/11/2026 16:23",
+    "llm": "gemma3:4b",
+    "embedding": "embeddinggemma",
+    "top_k": 3,
+    "seuil": 0.3,
+    "temperature": 0.2,
+    "questions": 25
+  },
+  "recherche": {
+    "recall_at_k": {
+      "bm25": {
+        "1": 0.95,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      },
+      "semantique": {
+        "1": 1.0,
+        "3": 1.0,
+        "5": 1.0,
+        "10": 1.0
+      }
+    },
+    "mrr": {
+      "bm25": 0.9666666666666668,
+      "semantique": 1.0
+    },
+    "meilleur_score": {
+      "Q01": 0.5874,
+      "Q02": 0.5113,
+      "Q03": 0.4958,
+      "Q04": 0.6817,
+      "Q05": 0.6056,
+      "Q06": 0.6568,
+      "Q07": 0.4901,
+      "Q08": 0.5335,
+      "Q09": 0.5245,
+      "Q10": 0.547,
+      "Q11": 0.6719,
+      "Q12": 0.4303,
+      "Q13": 0.3372,
+      "Q14": 0.5689,
+      "Q15": 0.5697,
+      "Q16": 0.6086,
+      "Q17": 0.6391,
+      "Q18": 0.551,
+      "Q19": 0.5439,
+      "Q20": 0.6465,
+      "Q21": 0.2465,
+      "Q22": 0.3412,
+      "Q23": 0.5874,
+      "Q24": 0.3755,
+      "Q25": 0.6023
+    },
+    "seuils": [
+      {
+        "seuil": 0.3,
+        "dans_corpus_au_dessus": 1.0,
+        "hors_corpus_refusees": 0.2
+      },
+      {
+        "seuil": 0.35,
+        "dans_corpus_au_dessus": 0.95,
+        "hors_corpus_refusees": 0.4
+      },
+      {
+        "seuil": 0.4,
+        "dans_corpus_au_dessus": 0.95,
+        "hors_corpus_refusees": 0.6
+      },
+      {
+        "seuil": 0.45,
+        "dans_corpus_au_dessus": 0.9,
+        "hors_corpus_refusees": 0.6
+      },
+      {
+        "seuil": 0.5,
+        "dans_corpus_au_dessus": 0.8,
+        "hors_corpus_refusees": 0.6
+      },
+      {
+        "seuil": 0.55,
+        "dans_corpus_au_dessus": 0.55,
+        "hors_corpus_refusees": 0.6
+      },
+      {
+        "seuil": 0.6,
+        "dans_corpus_au_dessus": 0.35,
+        "hors_corpus_refusees": 0.8
+      },
+      {
+        "seuil": 0.65,
+        "dans_corpus_au_dessus": 0.15,
+        "hors_corpus_refusees": 1.0
+      },
+      {
+        "seuil": 0.7,
+        "dans_corpus_au_dessus": 0.0,
+        "hors_corpus_refusees": 1.0
+      }
+    ],
+    "top_semantique": {
+      "Q01": [
+        [
+          "conges-payes.pdf",
+          0.5874
+        ],
+        [
+          "conges-payes.pdf",
+          0.4964
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.4616
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.4127
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3688
+        ]
+      ],
+      "Q02": [
+        [
+          "conges-payes.pdf",
+          0.5113
+        ],
+        [
+          "conges-payes.pdf",
+          0.4918
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3944
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.3834
+        ],
+        [
+          "Peut-on travailler à temps partiel ?",
+          0.375
+        ]
+      ],
+      "Q03": [
+        [
+          "conges-payes.pdf",
+          0.4958
+        ],
+        [
+          "conges-payes.pdf",
+          0.434
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3877
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3816
+        ],
+        [
+          "titres-restaurant.txt",
+          0.3636
+        ]
+      ],
+      "Q04": [
+        [
+          "temps-de-travail-rtt.pdf",
+          0.6817
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.598
+        ],
+        [
+          "titres-restaurant.txt",
+          0.5011
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.4793
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.4774
+        ]
+      ],
+      "Q05": [
+        [
+          "charte-teletravail.docx",
+          0.6056
+        ],
+        [
+          "charte-teletravail.docx",
+          0.5425
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.41
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.3935
+        ],
+        [
+          "Peut-on travailler à temps partiel ?",
+          0.3919
+        ]
+      ],
+      "Q06": [
+        [
+          "charte-teletravail.docx",
+          0.6568
+        ],
+        [
+          "charte-teletravail.docx",
+          0.5261
+        ],
+        [
+          "titres-restaurant.txt",
+          0.4391
+        ],
+        [
+          "titres-restaurant.txt",
+          0.4042
+        ],
+        [
+          "Mémo paie",
+          0.3706
+        ]
+      ],
+      "Q07": [
+        [
+          "notes-de-frais.pdf",
+          0.4901
+        ],
+        [
+          "titres-restaurant.txt",
+          0.4335
+        ],
+        [
+          "titres-restaurant.txt",
+          0.3945
+        ],
+        [
+          "deplacements-professionnels.md",
+          0.335
+        ],
+        [
+          "notes-de-frais.pdf",
+          0.3237
+        ]
+      ],
+      "Q08": [
+        [
+          "notes-de-frais.pdf",
+          0.5335
+        ],
+        [
+          "notes-de-frais.pdf",
+          0.5123
+        ],
+        [
+          "deplacements-professionnels.md",
+          0.3013
+        ],
+        [
+          "deplacements-professionnels.md",
+          0.2978
+        ],
+        [
+          "conges-payes.pdf",
+          0.2836
+        ]
+      ],
+      "Q09": [
+        [
+          "mutuelle-prevoyance.pdf",
+          0.5245
+        ],
+        [
+          "mutuelle-prevoyance.pdf",
+          0.4983
+        ],
+        [
+          "accident-du-travail.docx",
+          0.3373
+        ],
+        [
+          "titres-restaurant.txt",
+          0.3258
+        ],
+        [
+          "mutuelle-prevoyance.pdf",
+          0.3239
+        ]
+      ],
+      "Q10": [
+        [
+          "titres-restaurant.txt",
+          0.547
+        ],
+        [
+          "titres-restaurant.txt",
+          0.4754
+        ],
+        [
+          "notes-de-frais.pdf",
+          0.3032
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.1999
+        ],
+        [
+          "charte-teletravail.docx",
+          0.1706
+        ]
+      ],
+      "Q11": [
+        [
+          "titres-restaurant.txt",
+          0.6719
+        ],
+        [
+          "titres-restaurant.txt",
+          0.6255
+        ],
+        [
+          "charte-teletravail.docx",
+          0.5418
+        ],
+        [
+          "charte-teletravail.docx",
+          0.5027
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.3609
+        ]
+      ],
+      "Q12": [
+        [
+          "onboarding-nouvel-arrivant.docx",
+          0.4303
+        ],
+        [
+          "onboarding-nouvel-arrivant.docx",
+          0.3664
+        ],
+        [
+          "onboarding-nouvel-arrivant.docx",
+          0.352
+        ],
+        [
+          "acces-sites-parking.txt",
+          0.3191
+        ],
+        [
+          "acces-sites-parking.txt",
+          0.2897
+        ]
+      ],
+      "Q13": [
+        [
+          "charte-informatique.pdf",
+          0.3372
+        ],
+        [
+          "support-informatique.txt",
+          0.2684
+        ],
+        [
+          "charte-informatique.pdf",
+          0.2164
+        ],
+        [
+          "vpn-acces-distant.md",
+          0.2154
+        ],
+        [
+          "commande-materiel.md",
+          0.1801
+        ]
+      ],
+      "Q14": [
+        [
+          "vpn-acces-distant.md",
+          0.5689
+        ],
+        [
+          "vpn-acces-distant.md",
+          0.4639
+        ],
+        [
+          "charte-teletravail.docx",
+          0.2624
+        ],
+        [
+          "support-informatique.txt",
+          0.2266
+        ],
+        [
+          "support-informatique.txt",
+          0.2059
+        ]
+      ],
+      "Q15": [
+        [
+          "support-informatique.txt",
+          0.5697
+        ],
+        [
+          "support-informatique.txt",
+          0.5419
+        ],
+        [
+          "commande-materiel.md",
+          0.3416
+        ],
+        [
+          "commande-materiel.md",
+          0.3403
+        ],
+        [
+          "charte-informatique.pdf",
+          0.3373
+        ]
+      ],
+      "Q16": [
+        [
+          "securite-entrepots.pdf",
+          0.6086
+        ],
+        [
+          "securite-entrepots.pdf",
+          0.5165
+        ],
+        [
+          "securite-entrepots.pdf",
+          0.4674
+        ],
+        [
+          "reglement-interieur.pdf",
+          0.3847
+        ],
+        [
+          "formation-professionnelle.pdf",
+          0.3291
+        ]
+      ],
+      "Q17": [
+        [
+          "accident-du-travail.docx",
+          0.6391
+        ],
+        [
+          "accident-du-travail.docx",
+          0.5789
+        ],
+        [
+          "securite-entrepots.pdf",
+          0.541
+        ],
+        [
+          "securite-entrepots.pdf",
+          0.4251
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.4033
+        ]
+      ],
+      "Q18": [
+        [
+          "absences-evenements-familiaux.docx",
+          0.551
+        ],
+        [
+          "conges-payes.pdf",
+          0.4508
+        ],
+        [
+          "conges-payes.pdf",
+          0.4131
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.368
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.3348
+        ]
+      ],
+      "Q19": [
+        [
+          "Mémo paie",
+          0.5439
+        ],
+        [
+          "entretiens-annuels.md",
+          0.4023
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3716
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.3358
+        ],
+        [
+          "accident-du-travail.docx",
+          0.3356
+        ]
+      ],
+      "Q20": [
+        [
+          "Comment démissionner et quel est le préavis ?",
+          0.6465
+        ],
+        [
+          "mutuelle-prevoyance.pdf",
+          0.3997
+        ],
+        [
+          "charte-teletravail.docx",
+          0.3849
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3334
+        ],
+        [
+          "charte-teletravail.docx",
+          0.3225
+        ]
+      ],
+      "Q21": [
+        [
+          "acces-sites-parking.txt",
+          0.2465
+        ],
+        [
+          "entretiens-annuels.md",
+          0.2464
+        ],
+        [
+          "deplacements-professionnels.md",
+          0.2393
+        ],
+        [
+          "deplacements-professionnels.md",
+          0.237
+        ],
+        [
+          "entretiens-annuels.md",
+          0.2261
+        ]
+      ],
+      "Q22": [
+        [
+          "absences-evenements-familiaux.docx",
+          0.3412
+        ],
+        [
+          "absences-evenements-familiaux.docx",
+          0.3307
+        ],
+        [
+          "Comment obtenir une attestation employeur ?",
+          0.3288
+        ],
+        [
+          "Peut-on travailler à temps partiel ?",
+          0.3263
+        ],
+        [
+          "presentation-entreprise.pdf",
+          0.3182
+        ]
+      ],
+      "Q23": [
+        [
+          "presentation-entreprise.pdf",
+          0.5874
+        ],
+        [
+          "presentation-entreprise.pdf",
+          0.5529
+        ],
+        [
+          "titres-restaurant.txt",
+          0.5009
+        ],
+        [
+          "Mémo paie",
+          0.4997
+        ],
+        [
+          "mutuelle-prevoyance.pdf",
+          0.4978
+        ]
+      ],
+      "Q24": [
+        [
+          "charte-teletravail.docx",
+          0.3755
+        ],
+        [
+          "charte-teletravail.docx",
+          0.3745
+        ],
+        [
+          "charte-informatique.pdf",
+          0.3214
+        ],
+        [
+          "Peut-on travailler à temps partiel ?",
+          0.3165
+        ],
+        [
+          "onboarding-nouvel-arrivant.docx",
+          0.3147
+        ]
+      ],
+      "Q25": [
+        [
+          "temps-de-travail-rtt.pdf",
+          0.6023
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.529
+        ],
+        [
+          "temps-de-travail-rtt.pdf",
+          0.5262
+        ],
+        [
+          "titres-restaurant.txt",
+          0.4643
+        ],
+        [
+          "charte-teletravail.docx",
+          0.4203
+        ]
+      ]
+    }
+  },
+  "generation": {
+    "libre": {
+      "questions": 25,
+      "exactes_dans_corpus": 0.35,
+      "bien_sourcees_dans_corpus": 0.0,
+      "refus_a_tort": 0.0,
+      "bons_je_ne_sais_pas": 0.0,
+      "hallucinations_hors_corpus": 1.0,
+      "reponses_inexactes_dans_corpus": 0.65,
+      "latence_moyenne_s": 3.54,
+      "latence_mediane_s": 3.38,
+      "latence_max_s": 5.58
+    },
+    "llm": {
+      "questions": 25,
+      "exactes_dans_corpus": 0.0,
+      "bien_sourcees_dans_corpus": 0.0,
+      "refus_a_tort": 1.0,
+      "bons_je_ne_sais_pas": 1.0,
+      "hallucinations_hors_corpus": 0.0,
+      "reponses_inexactes_dans_corpus": 0.0,
+      "latence_moyenne_s": 3.25,
+      "latence_mediane_s": 3.23,
+      "latence_max_s": 3.84
+    },
+    "bm25": {
+      "questions": 25,
+      "exactes_dans_corpus": 0.95,
+      "bien_sourcees_dans_corpus": 0.95,
+      "refus_a_tort": 0.0,
+      "bons_je_ne_sais_pas": 1.0,
+      "hallucinations_hors_corpus": 0.0,
+      "reponses_inexactes_dans_corpus": 0.05,
+      "latence_moyenne_s": 19.77,
+      "latence_mediane_s": 20.36,
+      "latence_max_s": 36.33
+    },
+    "rag": {
+      "questions": 25,
+      "exactes_dans_corpus": 0.95,
+      "bien_sourcees_dans_corpus": 0.95,
+      "refus_a_tort": 0.0,
+      "bons_je_ne_sais_pas": 1.0,
+      "hallucinations_hors_corpus": 0.0,
+      "reponses_inexactes_dans_corpus": 0.05,
+      "latence_moyenne_s": 20.93,
+      "latence_mediane_s": 20.57,
+      "latence_max_s": 33.95
+    }
+  }
+}

@@ -1,0 +1,125 @@
+﻿id;config;question;dans_le_corpus;reponse;repond;sources_citees;bien_sourcee;mots_cles_ok;latence_ms;verdict_manuel
+Q01;libre;Combien de jours de congés payés acquiert-on par an ?;True;Selon la convention collective, vous acquérez 2,5 jours de congés payés par mois de travail effectif, soit 30 jours par an.;True;;False;False;5579;
+Q02;libre;Combien de temps à l'avance faut-il poser ses congés ?;True;Selon la convention collective, il faut généralement un préavis de 2 semaines. Vérifiez votre contrat de travail pour plus de précisions.;True;;False;False;4359;
+Q03;libre;Peut-on reporter des congés non pris sur l'année suivante ?;True;Oui, sous réserve de l'accord de l'employeur et du respect des limites légales. Veuillez consulter le règlement intérieur pour les détails.;True;;False;False;4523;
+Q04;libre;Combien de jours de RTT a un salarié non cadre ?;True;Un salarié non cadre a droit à 12 jours de RTT par an.;True;;False;True;2959;
+Q05;libre;Combien de jours de télétravail sont autorisés par semaine ?;True;Deux jours maximum.;True;;False;False;1733;
+Q06;libre;Quelle indemnité est versée pour le télétravail ?;True;L'indemnité de télétravail à Brumeval est de 50€ par jour travaillé à domicile.;True;;False;False;3917;
+Q07;libre;Quel est le plafond de remboursement d'un repas à Paris ?;True;Le plafond de remboursement pour un repas à Paris est de 85€ TTC.;True;;False;False;3000;
+Q08;libre;Dans quel délai faut-il soumettre une note de frais ?;True;D'ici 15 jours suivant la date de la dépense.;True;;False;False;2782;
+Q09;libre;Quelle part de la cotisation mutuelle est prise en charge par l'employeur ?;True;L'employeur prend en charge 50% de la cotisation mutuelle pour les salariés.;True;;False;False;3376;
+Q10;libre;Quelle est la valeur d'un titre-restaurant ?;True;Le titre-restaurant Brumeval vaut actuellement 15,85€ par action.;True;;False;False;3200;
+Q11;libre;A-t-on droit aux titres-restaurant les jours de télétravail ?;True;Oui, les jours de télétravail sont couverts par le dispositif titres-restaurant.;True;;False;True;3220;
+Q12;libre;À quelle heure et où a lieu l'accueil du premier jour ?;True;L'accueil a lieu à 9h00 dans le hall d'entrée.;True;;False;True;3275;
+Q13;libre;Quelle est la longueur minimale d'un mot de passe ?;True;12 caractères minimum.;True;;False;True;2017;
+Q14;libre;Je ne reçois pas la notification sur mon téléphone pour me connecter au VPN, que faire ?;True;Vérifiez les paramètres de votre téléphone et assurez-vous que les notifications de l'application Brumeval sont activées. Redémarrez également votre téléphone.;True;;False;False;5408;
+Q15;libre;Qui contacter en cas de panne informatique ?;True;Contactez le service informatique au 01.23.45.67.89.;True;;False;False;3463;
+Q16;libre;Quels équipements de protection sont obligatoires dans les entrepôts ?;True;Dans les entrepôts Brumeval, l'utilisation des EPI est obligatoire : chaussures de sécurité, gilet de sécurité, et casque si nécessaire.;True;;False;True;4476;
+Q17;libre;Dans quel délai faut-il prévenir son responsable après un accident du travail ?;True;Il faut en informer son responsable dans les plus brefs délais, idéalement dans les 24 heures suivant l'accident.;True;;False;True;4052;
+Q18;libre;Combien de jours de congé a-t-on pour son mariage ?;True;Selon la politique de Brumeval, vous bénéficiez de 5 jours de congé pour votre mariage.;True;;False;True;3572;
+Q19;libre;Quand le salaire est-il versé ?;True;Les salaires sont versés le 25 de chaque mois.;True;;False;False;2658;
+Q20;libre;Quel est le préavis de démission pour un cadre ?;True;Selon la convention collective, le préavis de démission pour un cadre est de 6 mois.;True;;False;False;3321;
+Q21;libre;Comment réserver une salle de réunion ?;False;Je peux vous aider à trouver une salle disponible. Veuillez préciser la date, l'heure et le nombre de personnes.;True;;False;;4007;
+Q22;libre;Y a-t-il une crèche d'entreprise ?;False;Oui, une crèche d'entreprise est prévue à Brumeval.;True;;False;;3101;
+Q23;libre;Quel est le salaire d'un cariste chez Brumeval ?;False;Le salaire d'un cariste chez Brumeval est de 28 € bruts horaires.;True;;False;;3513;
+Q24;libre;Peut-on venir au bureau avec son chien ?;False;Actuellement, non. La politique de Brumeval n'autorise pas les animaux de compagnie en intérieur.;True;;False;;3712;
+Q25;libre;Les intérimaires ont-ils droit aux jours de RTT ?;False;Cela dépend de leur convention collective. Vérifiez le contrat de travail de chaque intérimaire.;True;;False;;3280;
+Q01;llm;Combien de jours de congés payés acquiert-on par an ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3247;
+Q02;llm;Combien de temps à l'avance faut-il poser ses congés ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3181;
+Q03;llm;Peut-on reporter des congés non pris sur l'année suivante ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3346;
+Q04;llm;Combien de jours de RTT a un salarié non cadre ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3371;
+Q05;llm;Combien de jours de télétravail sont autorisés par semaine ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3203;
+Q06;llm;Quelle indemnité est versée pour le télétravail ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3189;
+Q07;llm;Quel est le plafond de remboursement d'un repas à Paris ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3185;
+Q08;llm;Dans quel délai faut-il soumettre une note de frais ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3186;
+Q09;llm;Quelle part de la cotisation mutuelle est prise en charge par l'employeur ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3246;
+Q10;llm;Quelle est la valeur d'un titre-restaurant ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3240;
+Q11;llm;A-t-on droit aux titres-restaurant les jours de télétravail ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3252;
+Q12;llm;À quelle heure et où a lieu l'accueil du premier jour ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3140;
+Q13;llm;Quelle est la longueur minimale d'un mot de passe ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3234;
+Q14;llm;Je ne reçois pas la notification sur mon téléphone pour me connecter au VPN, que faire ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3365;
+Q15;llm;Qui contacter en cas de panne informatique ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3229;
+Q16;llm;Quels équipements de protection sont obligatoires dans les entrepôts ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3154;
+Q17;llm;Dans quel délai faut-il prévenir son responsable après un accident du travail ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3221;
+Q18;llm;Combien de jours de congé a-t-on pour son mariage ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3224;
+Q19;llm;Quand le salaire est-il versé ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3153;
+Q20;llm;Quel est le préavis de démission pour un cadre ?;True;Je ne trouve pas cette information dans la base de connaissances.;False;;False;False;3182;
+Q21;llm;Comment réserver une salle de réunion ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;3079;
+Q22;llm;Y a-t-il une crèche d'entreprise ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;3225;
+Q23;llm;Quel est le salaire d'un cariste chez Brumeval ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;3394;
+Q24;llm;Peut-on venir au bureau avec son chien ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;3232;
+Q25;llm;Les intérimaires ont-ils droit aux jours de RTT ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;3844;
+Q01;bm25;Combien de jours de congés payés acquiert-on par an ?;True;Chaque salarié acquiert 2,08 jours ouvrés de congés payés par mois de travail effectif, soit 25 jours ouvrés par an pour une année complète [1].;True;conges-payes.pdf;True;True;16936;
+Q02;bm25;Combien de temps à l'avance faut-il poser ses congés ?;True;Il faut poser la demande de congés payés au moins 15 jours avant le premier jour d'absence [1].;True;conges-payes.pdf;True;True;4953;
+Q03;bm25;Peut-on reporter des congés non pris sur l'année suivante ?;True;Non, les congés non pris au 31 mai ne peuvent être reportés que dans la limite de 5 jours, à prendre avant le 31 décembre suivant [1].;True;conges-payes.pdf;True;True;16049;
+Q04;bm25;Combien de jours de RTT a un salarié non cadre ?;True;Les salariés non cadres à 37 heures bénéficient de 12 jours de RTT par an [1].;True;temps-de-travail-rtt.pdf;True;True;14091;
+Q05;bm25;Combien de jours de télétravail sont autorisés par semaine ?;True;Jusqu'à 2 jours de télétravail par semaine [1].;True;charte-teletravail.docx;True;True;26252;
+Q06;bm25;Quelle indemnité est versée pour le télétravail ?;True;Une indemnité de 2,50 € par jour télétravaillé est versée, plafonnée à 50 € par mois [1].;True;charte-teletravail.docx;True;True;13288;
+Q07;bm25;Quel est le plafond de remboursement d'un repas à Paris ?;True;Le plafond de remboursement d'un repas à Paris est de 25 € [1].;True;notes-de-frais.pdf;True;True;24787;
+Q08;bm25;Dans quel délai faut-il soumettre une note de frais ?;True;La note de frais doit être soumise dans les 30 jours suivant la dépense [1]. Au-delà de 60 jours, la note est refusée [1].;True;notes-de-frais.pdf;True;True;27720;
+Q09;bm25;Quelle part de la cotisation mutuelle est prise en charge par l'employeur ?;True;Pour un salarié seul, l'employeur prend en charge 40 % de la cotisation (92 €) [1]. Pour la formule famille, l'employeur prend en charge 40 % de la cotisation (168 €) [1]. La cotisation de prévoyance est prise en charge à 100 % par Brumeval pour les non-cadres et à 75 % pour les cadres [2].;True;mutuelle-prevoyance.pdf;True;False;36326;
+Q10;bm25;Quelle est la valeur d'un titre-restaurant ?;True;La valeur d'un titre-restaurant est de 9 euros [1].;True;titres-restaurant.txt;True;True;13574;
+Q11;bm25;A-t-on droit aux titres-restaurant les jours de télétravail ?;True;Oui, les jours de télétravail ouvrent droit à un titre-restaurant [1], comme les jours sur site [1].;True;titres-restaurant.txt;True;True;14904;
+Q12;bm25;À quelle heure et où a lieu l'accueil du premier jour ?;True;L'accueil du premier jour a lieu à 9 h au siège (14 rue des Embruns, Nantes) [1].;True;onboarding-nouvel-arrivant.docx;True;True;27979;
+Q13;bm25;Quelle est la longueur minimale d'un mot de passe ?;True;Le mot de passe compte au moins 12 caractères, avec des majuscules, des minuscules, des chiffres et un caractère spécial [1].;True;support-informatique.txt;False;True;19943;
+Q14;bm25;Je ne reçois pas la notification sur mon téléphone pour me connecter au VPN, que faire ?;True;Vérifiez que le téléphone a du réseau, ouvrez Authenticator et saisissez le code à 6 chiffres affiché [2].;True;vpn-acces-distant.md;True;True;24795;
+Q15;bm25;Qui contacter en cas de panne informatique ?;True;"En cas de panne informatique, vous pouvez contacter :
+
+*   Le portail Assist (assist.brumeval.example) [1]
+*   Le support informatique au poste 4400 (02 40 00 44 00) du lundi au vendredi de 8 h à 18 h [1]
+*   helpdesk@brumeval.example pour les demandes non urgentes [1]
+
+Je ne trouve pas cette information dans la base de connaissances.";True;support-informatique.txt;True;True;26154;
+Q16;bm25;Quels équipements de protection sont obligatoires dans les entrepôts ?;True;"Les équipements de protection individuelle (EPI) suivants sont obligatoires dans les zones de stockage et sur les quais :
+
+*   chaussures de sécurité [1]
+*   gilet haute visibilité [1]
+*   gants de manutention lors de la manipulation de colis [1]
+*   casque dans les zones de stockage en hauteur signalées par un marquage jaune [1]
+
+Je ne trouve pas cette information dans la base de connaissances.";True;securite-entrepots.pdf;True;True;28513;
+Q17;bm25;Dans quel délai faut-il prévenir son responsable après un accident du travail ?;True;Dans les 24 heures, sauf impossibilité absolue [2].;True;accident-du-travail.docx;True;True;9115;
+Q18;bm25;Combien de jours de congé a-t-on pour son mariage ?;True;5 jours ouvrés [1];True;absences-evenements-familiaux.docx;True;True;27088;
+Q19;bm25;Quand le salaire est-il versé ?;True;Le salaire est versé par virement le dernier jour ouvré du mois [1].;True;Mémo paie;True;True;24235;
+Q20;bm25;Quel est le préavis de démission pour un cadre ?;True;Le préavis est de 3 mois pour les cadres [1].;True;Comment démissionner et quel est le préavis ?;True;True;21631;
+Q21;bm25;Comment réserver une salle de réunion ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;12161;
+Q22;bm25;Y a-t-il une crèche d'entreprise ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;26502;
+Q23;bm25;Quel est le salaire d'un cariste chez Brumeval ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;20356;
+Q24;bm25;Peut-on venir au bureau avec son chien ?;False;Je n'ai trouvé aucune information sur ce sujet dans la base de connaissances. La question a été ajoutée aux questions sans réponse pour que la base soit complétée.;False;;False;;0;
+Q25;bm25;Les intérimaires ont-ils droit aux jours de RTT ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;16818;
+Q01;rag;Combien de jours de congés payés acquiert-on par an ?;True;Chaque salarié acquiert 2,08 jours ouvrés de congés payés par mois de travail effectif, soit 25 jours ouvrés par an [1].;True;conges-payes.pdf;True;True;16440;
+Q02;rag;Combien de temps à l'avance faut-il poser ses congés ?;True;Il faut faire la demande dans l'outil RH Kiosque au moins 15 jours avant le premier jour d'absence [2].;True;conges-payes.pdf;True;True;20567;
+Q03;rag;Peut-on reporter des congés non pris sur l'année suivante ?;True;Oui, il est possible de reporter des congés non pris au 31 mai dans la limite de 5 jours, à prendre avant le 31 décembre suivant [1].;True;conges-payes.pdf;True;True;7909;
+Q04;rag;Combien de jours de RTT a un salarié non cadre ?;True;Un salarié non cadre à 37 heures bénéficie de 12 jours de RTT par an [1].;True;temps-de-travail-rtt.pdf;True;True;16673;
+Q05;rag;Combien de jours de télétravail sont autorisés par semaine ?;True;Jusqu'à 2 jours de télétravail par semaine [1].;True;charte-teletravail.docx;True;True;27291;
+Q06;rag;Quelle indemnité est versée pour le télétravail ?;True;Une indemnité de 2,50 € par jour télétravaillé est versée, plafonnée à 50 € par mois [1].;True;charte-teletravail.docx;True;True;16780;
+Q07;rag;Quel est le plafond de remboursement d'un repas à Paris ?;True;Le plafond de remboursement d'un repas à Paris est de 25 € [1].;True;notes-de-frais.pdf;True;True;3389;
+Q08;rag;Dans quel délai faut-il soumettre une note de frais ?;True;La note de frais doit être soumise dans les 30 jours suivant la dépense [1]. Au-delà de 60 jours, la note est refusée [1].;True;notes-de-frais.pdf;True;True;19972;
+Q09;rag;Quelle part de la cotisation mutuelle est prise en charge par l'employeur ?;True;Pour un salarié seul, Brumeval prend en charge 40 % de la cotisation mensuelle, soit 92 € [2]. Pour la formule famille, l'employeur prend en charge 40 % de la cotisation, soit 168 € [2].;True;mutuelle-prevoyance.pdf;True;False;33947;
+Q10;rag;Quelle est la valeur d'un titre-restaurant ?;True;La valeur d'un titre-restaurant est de 9 euros [1].;True;titres-restaurant.txt;True;True;18861;
+Q11;rag;A-t-on droit aux titres-restaurant les jours de télétravail ?;True;Oui, les jours de télétravail ouvrent droit à un titre-restaurant [1], [2].;True;titres-restaurant.txt;True;True;26811;
+Q12;rag;À quelle heure et où a lieu l'accueil du premier jour ?;True;L'accueil a lieu à 9 h au siège (14 rue des Embruns, Nantes) [1].;True;onboarding-nouvel-arrivant.docx;True;True;25950;
+Q13;rag;Quelle est la longueur minimale d'un mot de passe ?;True;Le mot de passe compte au moins 12 caractères, avec des majuscules, des minuscules, des chiffres et un caractère spécial [1].;True;charte-informatique.pdf;True;True;16406;
+Q14;rag;Je ne reçois pas la notification sur mon téléphone pour me connecter au VPN, que faire ?;True;Vérifiez que le téléphone a du réseau, ouvrez Authenticator et saisissez le code à 6 chiffres affiché. [2];True;vpn-acces-distant.md;True;True;22157;
+Q15;rag;Qui contacter en cas de panne informatique ?;True;"Vous pouvez contacter le support informatique via les canaux suivants :
+
+*   **Portail Assist** [1]
+*   **Téléphone** : 4400 (du lundi au vendredi de 8 h à 18 h) ou 02 40 00 44 00 (en dehors des horaires) pour les sites logistiques.
+*   **Courriel** : helpdesk@brumeval.example pour les demandes non urgentes [1].
+
+En cas de problème urgent (perte ou vol de matériel, courriel suspect), appelez immédiatement le 4400 [7].";True;support-informatique.txt;True;True;32455;
+Q16;rag;Quels équipements de protection sont obligatoires dans les entrepôts ?;True;"Les équipements de protection individuelle (EPI) suivants sont obligatoires dans les zones de stockage et sur les quais :
+
+*   Chaussures de sécurité [1]
+*   Gilet haute visibilité [1]
+*   Gants de manutention lors de la manipulation de colis [1]
+*   Casque dans les zones de stockage en hauteur signalées par un marquage jaune [1]";True;securite-entrepots.pdf;True;True;30284;
+Q17;rag;Dans quel délai faut-il prévenir son responsable après un accident du travail ?;True;Dans les 24 heures, sauf impossibilité absolue [2].;True;accident-du-travail.docx;True;True;11208;
+Q18;rag;Combien de jours de congé a-t-on pour son mariage ?;True;5 jours ouvrés [1].;True;absences-evenements-familiaux.docx;True;True;31985;
+Q19;rag;Quand le salaire est-il versé ?;True;Le salaire est versé par virement le dernier jour ouvré du mois [1].;True;Mémo paie;True;True;25794;
+Q20;rag;Quel est le préavis de démission pour un cadre ?;True;Le préavis est de 3 mois pour un cadre [2].;True;mutuelle-prevoyance.pdf;False;True;26164;
+Q21;rag;Comment réserver une salle de réunion ?;False;Je n'ai trouvé aucune information sur ce sujet dans la base de connaissances. La question a été ajoutée aux questions sans réponse pour que la base soit complétée.;False;;False;;1509;
+Q22;rag;Y a-t-il une crèche d'entreprise ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;28085;
+Q23;rag;Quel est le salaire d'un cariste chez Brumeval ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;29244;
+Q24;rag;Peut-on venir au bureau avec son chien ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;18758;
+Q25;rag;Les intérimaires ont-ils droit aux jours de RTT ?;False;Je ne trouve pas cette information dans la base de connaissances.;False;;False;;14529;
