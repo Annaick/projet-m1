@@ -1,20 +1,26 @@
-# Backlog du MVP
+# Backlog
 
-Découpé en 10 lots, dans l'ordre de dépendance. Une case cochée = fait **et** testé.
+Lots 1 à 10 : le MVP, **terminés** (22/11/2026). Lots 11 à 15 : **ce qui reste** pour le rendu.
+Une case cochée = fait **et** testé.
 Référence : [`architecture.md`](architecture.md) (conception v1) et [`design/`](design/) (maquettes).
 
-| Lot | Contenu | Dépend de |
-|---|---|---|
-| 1 | Environnement et modèle de données | — |
-| 2 | Moteur d'ingestion | 1 |
-| 3 | API base de connaissances | 2 |
-| 4 | Moteur de réponse RAG | 2 |
-| 5 | API conversations, paramètres, questions sans réponse | 4 |
-| 6 | Interface : socle (thème, barre latérale, client API) | 1 |
-| 7 | Interface : accueil et conversation | 5, 6 |
-| 8 | Interface : base de connaissances, paramètres, questions sans réponse | 3, 5, 6 |
-| 9 | Corpus fictif et 25 questions de référence | — |
-| 10 | Banc d'évaluation, résultats, finitions | 4, 9 |
+| Lot | Contenu | Dépend de | État |
+|---|---|---|---|
+| 1 | Environnement et modèle de données | — | fait |
+| 2 | Moteur d'ingestion | 1 | fait |
+| 3 | API base de connaissances | 2 | fait |
+| 4 | Moteur de réponse RAG | 2 | fait |
+| 5 | API conversations, paramètres, questions sans réponse | 4 | fait |
+| 6 | Interface : socle (thème, barre latérale, client API) | 1 | fait |
+| 7 | Interface : accueil et conversation | 5, 6 | fait |
+| 8 | Interface : base de connaissances, paramètres, questions sans réponse | 3, 5, 6 | fait |
+| 9 | Corpus fictif et 25 questions de référence | — | fait |
+| 10 | Banc d'évaluation, résultats, scripts d'installation | 4, 9 | fait |
+| **11** | **Validation par l'équipe (corpus, questions, installation sur chaque PC)** | — | **à faire** |
+| **12** | **Analyse des résultats (vérification manuelle, graphiques, mesures complémentaires)** | 11 | **à faire** |
+| **13** | **Améliorations facultatives de l'application** | — | facultatif |
+| **14** | **Rapport (15 à 20 pages)** | 12 | **à faire** |
+| **15** | **Soutenance et démo** | 12, 14 | **à faire** |
 
 ---
 
@@ -86,8 +92,53 @@ Référence : [`architecture.md`](architecture.md) (conception v1) et [`design/`
 - [x] Ajustement du seuil, du top-k et du chunking d'après les résultats
 - [x] Test de bout en bout, README final, scénario de démo
 
-## Après le MVP (rapport, à faire par l'équipe)
-- [ ] Valider le domaine du corpus et relire les 25 questions
-- [ ] Remplir `verdict_manuel` dans `reponses.csv`, tracer les graphiques
-- [ ] Mesurer la latence sur une machine avec une carte graphique récente
-- [ ] Rapport (15 à 20 pages) et répétition de la démo (`docs/demo.md`)
+---
+
+# Ce qui reste
+
+Point de départ : résultats de référence dans [`eval/results/2026-11-22_1623/`](../eval/results/2026-11-22_1623/rapport.md)
+(RAG sémantique : 95 % de réponses exactes et sourcées, 0 % d'hallucination hors corpus ;
+LLM seul sans consigne : 100 % d'hallucinations hors corpus). Barème : 45 pts sur 100 portent sur
+l'évaluation (15) et le rapport (30) : les lots 12 et 14 sont prioritaires.
+
+## Lot 11 — Validation par l'équipe
+- [ ] Chacun clone le dépôt, lance `.\install.cmd` puis `.\start.cmd`, et note dans le journal : OS, RAM,
+  carte graphique, mode GPU ou processeur, temps d'une réponse
+- [ ] Valider le domaine du corpus (Brumeval, PME fictive de logistique, D-014) ou en choisir un autre :
+  il suffit alors de réécrire `data/sources/*.md`, `data/knowledge.json` et `eval/questions.json`
+- [ ] Relire les 20 documents (cohérence, aucune donnée réelle) et les 25 questions (réponse attendue juste,
+  mots-clés pertinents)
+- [ ] Ajouter 5 questions **reformulées** sans les mots du document (ex. « Je me marie en juin, j'ai droit à
+  combien de jours ? ») : c'est là que la recherche sémantique devrait se distinguer de BM25
+
+## Lot 12 — Analyse des résultats
+- [ ] Remplir la colonne `verdict_manuel` de `reponses.csv` (juste / partiel / faux / hallucination) :
+  le contrôle par mots-clés est indicatif
+- [ ] Graphiques : Recall@k (BM25 vs sémantique), balayage des seuils (dans / hors corpus), latence par
+  configuration, taux d'hallucination par configuration
+- [ ] Analyse d'erreurs : Q09 (le modèle inverse 60 % / 40 % malgré le bon extrait), Q23 et Q25 (hors corpus
+  mais proches du corpus : seul le refus du LLM les écarte), Q13 (score faible malgré le bon document)
+- [ ] Relancer l'évaluation sur un PC avec une carte graphique récente (latence) : `scripts\eval.ps1`
+- [ ] Facultatif : comparer un 2e modèle (`qwen2.5:3b` ou `llama3.2:3b`) et une 2e taille de fragments
+  (380 mots) pour discuter les choix
+
+## Lot 13 — Améliorations facultatives (seulement si le temps le permet)
+- [ ] Boutons « Copier » et « Régénérer » sous les réponses (présents dans les maquettes)
+- [ ] Afficher les extraits consultés quand le modèle répond sans citer
+- [ ] Ouvrir le document source depuis une bulle de citation
+- [ ] Interface : supprimer l'avertissement d'une conversation et mettre à jour la pastille « Questions sans
+  réponse » sans recharger
+
+## Lot 14 — Rapport (15 à 20 pages)
+- [ ] Plan calé sur le barème : problème et objectifs (10), architecture (10), MVP et intégration IA (25),
+  protocole de test et performances (15), conclusion et limites
+- [ ] Sources réutilisables : `docs/plan-projet.pdf`, `docs/architecture.md`, `docs/design/`,
+  `eval/README.md` (définition des métriques), journal et décisions de l'équipe
+- [ ] Captures d'écran de l'application et schéma d'architecture
+- [ ] Limites et perspectives : modèle 4B sur processeur (latence ~20 s), pas d'OCR, mono-utilisateur,
+  multi-entreprise écarté du MVP
+
+## Lot 15 — Soutenance et démo
+- [ ] Répéter le scénario de [`demo.md`](demo.md) sur la machine de la soutenance (préchauffer le modèle)
+- [ ] Diapositives (10 min) : problème, architecture, démo, résultats chiffrés, limites
+- [ ] Vidéo de secours de la démo, au cas où la machine serait trop lente le jour J
