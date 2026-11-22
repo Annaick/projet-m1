@@ -9,7 +9,8 @@ import api_client as api
 CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-.stApp *:not([data-testid="stIconMaterial"]):not(code):not(pre) { font-family: Inter, system-ui, sans-serif; }
+.stApp *:not([data-testid="stIconMaterial"]):not(code):not(pre),
+[data-testid="stPopoverBody"] *:not([data-testid="stIconMaterial"]) { font-family: Inter, system-ui, sans-serif; }
 [data-testid="stIconMaterial"] { font-family: "Material Symbols Rounded" !important; }
 .stApp { background: #F7F8FA; color: #1A1D23; }
 header[data-testid="stHeader"] { background: transparent; }
@@ -33,7 +34,7 @@ section[data-testid="stSidebar"] [class*="_active"] button { background: #E0E5F5
 section[data-testid="stSidebar"] [data-testid="stPopover"] button { min-height: 38px; width: 34px; padding: 0; justify-content: center; }
 .brand { display: flex; align-items: center; gap: 10px; padding: 4px 10px 16px; font-weight: 700; font-size: 16px; }
 .brand-logo { width: 30px; height: 30px; border-radius: 8px; background: #3B5BDB; color: #fff; display: flex; align-items: center; justify-content: center; }
-.side-label { padding: 18px 10px 6px; font-size: 12px; font-weight: 600; color: #5A6170; }
+.side-label { padding: 18px 10px 10px; line-height: 1.2; font-size: 12px; font-weight: 600; color: #5A6170; }
 .status { display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 12px; color: #5A6170; }
 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
@@ -74,13 +75,17 @@ TYPE_LABELS = {"file": "Fichier", "richtext": "Texte riche", "faq": "FAQ"}
 
 def setup(max_width: int = 820) -> None:
     st.markdown(CSS, unsafe_allow_html=True)
-    st.markdown(f"<style>.block-container {{ max-width: {max_width}px; }}</style>", unsafe_allow_html=True)
+    st.markdown(
+        f"<style>.block-container, [data-testid='stBottomBlockContainer'] {{ max-width: {max_width}px; }}</style>",
+        unsafe_allow_html=True,
+    )
 
 
 def go(page: str, **state) -> None:
     for key, value in state.items():
         st.session_state[key] = value
-    st.switch_page(page)
+    query = {"c": str(state["conversation_id"])} if state.get("conversation_id") else None
+    st.switch_page(page, query_params=query)
 
 
 def open_conversation(conversation_id: int | None) -> None:

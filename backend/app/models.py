@@ -94,7 +94,7 @@ class AISettings(SQLModel, table=True):
     directives: str = "Réponds en français, de façon concise. Utilise des listes quand il y a des étapes."
     llm_model: str = "gemma3:4b"
     temperature: float = 0.2
-    top_k: int = 4
+    top_k: int = 3
     score_threshold: float = 0.40
 
 

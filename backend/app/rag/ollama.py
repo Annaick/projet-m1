@@ -52,7 +52,7 @@ def chat_stream(messages: list[dict], model: str, temperature: float) -> Iterato
         "messages": messages,
         "stream": True,
         "keep_alive": KEEP_ALIVE,
-        "options": _options(temperature=temperature, num_ctx=context_size(messages)),
+        "options": _options(temperature=temperature, num_ctx=context_size(messages), num_predict=512),
     }
     try:
         with httpx.stream("POST", f"{settings.ollama_url}/api/chat", json=payload, timeout=600) as response:

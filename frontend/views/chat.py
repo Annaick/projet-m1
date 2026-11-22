@@ -15,7 +15,17 @@ SUGGESTIONS = [
     "Quelles sont les règles du télétravail ?",
 ]
 
+# La conversation ouverte est aussi dans l'URL (?c=12) : un rafraîchissement ne la perd pas
+if "c" in st.query_params and "conversation_id" not in st.session_state:
+    try:
+        st.session_state["conversation_id"] = int(st.query_params["c"])
+    except ValueError:
+        pass
 conversation_id = st.session_state.get("conversation_id")
+if conversation_id:
+    st.query_params["c"] = str(conversation_id)
+else:
+    st.query_params.pop("c", None)
 ui.setup(max_width=800)
 ui.sidebar(active="conversation" if conversation_id else "chat")
 
@@ -163,6 +173,7 @@ def conversation() -> None:
         data = api.get_messages(conversation_id)
     except api.ApiError:
         st.session_state["conversation_id"] = None
+        st.query_params.pop("c", None)
         st.rerun()
     st.markdown(f"<div style='font-weight:600; font-size:15px'>{escape(data['conversation']['title'])}</div>", unsafe_allow_html=True)
     for message in data["messages"]:

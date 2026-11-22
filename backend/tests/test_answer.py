@@ -16,7 +16,8 @@ def test_refus_detecte_sans_citation():
 
 def test_relance_courte_enrichie():
     assert search_query("Et pour les RTT ?", "Combien de jours de congés ?") == "Combien de jours de congés ? Et pour les RTT ?"
-    assert search_query("Quelle est la procédure complète pour commander un nouvel ordinateur portable ?", "x") .startswith("Quelle")
+    assert search_query("Comment réserver une salle de réunion ?", "Et combien de RTT ?") == "Comment réserver une salle de réunion ?"
+    assert search_query("Aussi pour les cadres ?", "Combien de RTT ?") == "Combien de RTT ? Aussi pour les cadres ?"
     assert search_query("Et les RTT ?", None) == "Et les RTT ?"
 
 

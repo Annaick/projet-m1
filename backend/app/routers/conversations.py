@@ -15,7 +15,7 @@ from app.rag.ollama import OllamaError
 
 router = APIRouter(tags=["conversations"])
 
-HISTORY_MESSAGES = 4  # 2 derniers échanges envoyés au LLM
+HISTORY_MESSAGES = 4  # 2 derniers échanges (seules les questions sont envoyées au LLM)
 
 
 class ConversationIn(BaseModel):
@@ -130,7 +130,9 @@ def _answer_events(conversation_id: int, question: str) -> Iterator[str]:
                 select(Message).where(Message.conversation_id == conversation_id).order_by(Message.id.desc()).limit(HISTORY_MESSAGES)
             )
         )[::-1]
-        history = [{"role": m.role, "content": m.content} for m in previous if m.answered]
+        # Seules les questions précédentes sont rappelées au modèle : recopier ses anciennes réponses
+        # l'amenait à réattribuer des faits au mauvais extrait (et allongeait le prompt)
+        history = [{"role": "user", "content": m.content} for m in previous if m.role == "user"]
         previous_question = next((m.content for m in reversed(previous) if m.role == "user"), None)
 
         user_message = Message(conversation_id=conversation_id, role="user", content=question)

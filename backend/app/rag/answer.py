@@ -52,9 +52,17 @@ class Extract:
 
 # --- Recherche ---------------------------------------------------------------
 
+_FOLLOW_UP = re.compile(r"^(et|aussi|pareil|idem|m[eê]me chose|dans ce cas|et si|pour les|pour le|pour la|sinon)\b", re.I)
+
+
+def is_follow_up(question: str) -> bool:
+    """Relance qui n'a de sens qu'avec la question précédente (« Et pour les RTT ? »)."""
+    return bool(_FOLLOW_UP.match(question.strip()))
+
+
 def search_query(question: str, previous_question: str | None) -> str:
-    """Une relance courte (« Et pour les RTT ? ») est enrichie de la question précédente."""
-    if previous_question and len(question.split()) <= 8:
+    """Une relance est enrichie de la question précédente ; une nouvelle question est cherchée seule."""
+    if previous_question and is_follow_up(question):
         return f"{previous_question} {question}"
     return question
 
@@ -106,7 +114,8 @@ def build_messages(ai: AISettings, extracts: list[Extract], question: str, histo
         f"{format_extracts(extracts)}\n\n"
         "---\n"
         f"Question : {question}\n\n"
-        "Réponds uniquement à partir des extraits ci-dessus et cite-les avec leur numéro entre crochets, "
+        "Réponds uniquement à la question posée, à partir des extraits ci-dessus, sans ajouter d'information "
+        "non demandée. Cite les extraits utilisés avec leur numéro entre crochets, "
         "par exemple [1]. Si les extraits ne permettent pas de répondre, réponds exactement : "
         f"« {REFUSAL} »"
     )

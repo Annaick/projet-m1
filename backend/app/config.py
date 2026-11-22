@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     chunk_overlap: int = 40
 
     # Valeurs par défaut des paramètres IA (modifiables ensuite dans l'interface)
-    default_top_k: int = 4
+    default_top_k: int = 3
     default_score_threshold: float = 0.40
     default_temperature: float = 0.2
 
