@@ -1,0 +1,34 @@
+{
+  "richtext": [
+    {
+      "title": "Mémo paie",
+      "content": "# Mémo paie\n\nLe salaire est versé par virement le **dernier jour ouvré du mois**. Le bulletin de paie est disponible le même jour, uniquement sous forme électronique, dans le coffre-fort numérique accessible depuis Kiosque. Il est conservé 50 ans.\n\n## Acompte\n\nUn acompte de 50 % maximum du salaire net du mois en cours peut être demandé une fois par mois, avant le 10, auprès du service paie (paie@brumeval.example).\n\n## Primes\n\n- Prime de fin d'année : un demi-mois de salaire brut, versée en novembre, pour les salariés présents au 30 septembre.\n- Prime de nuit : majoration de 20 % des heures effectuées entre 21 h et 6 h.\n- Intéressement : versé en mai si les objectifs de l'année précédente sont atteints. Il peut être placé sur le plan d'épargne entreprise, abondé à 50 % dans la limite de 600 € par an.\n\n## Une erreur sur le bulletin ?\n\nSignaler l'erreur au service paie avant le 10 du mois suivant. La régularisation est faite sur la paie suivante, ou par virement exceptionnel si l'écart dépasse 200 €."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Comment obtenir une attestation employeur ?",
+      "answer": "L'attestation employeur se télécharge directement dans Kiosque, rubrique « Mes documents », sans passer par le service RH. Pour une attestation spécifique (banque, logement avec mentions particulières), écrire à rh@brumeval.example : délai de 3 jours ouvrés."
+    },
+    {
+      "question": "Comment modifier mon adresse ou mon RIB ?",
+      "answer": "Le changement d'adresse se fait dans Kiosque, rubrique « Mes informations ». Le changement de RIB se fait au même endroit, avec le nouveau RIB en pièce jointe ; il est pris en compte sur la paie suivante s'il est saisi avant le 15 du mois."
+    },
+    {
+      "question": "Qui est mon interlocuteur au CSE ?",
+      "answer": "Le comité social et économique (CSE) compte 9 élus titulaires. La liste des élus par site est affichée sur les panneaux du CSE et sur l'intranet. Le CSE se joint à cse@brumeval.example. Il gère aussi les activités sociales et culturelles : chèques-vacances, billetterie, chèques cadeaux de fin d'année."
+    },
+    {
+      "question": "Peut-on travailler à temps partiel ?",
+      "answer": "Oui. La demande de passage à temps partiel se fait par écrit au service RH au moins 3 mois à l'avance, en précisant la durée et la répartition souhaitées. La direction répond sous un mois ; un refus est motivé par les contraintes du service. Un temps partiel parental (80 % ou plus) est accordé de droit après une naissance ou une adoption."
+    },
+    {
+      "question": "Comment démissionner et quel est le préavis ?",
+      "answer": "La démission se fait par lettre remise en main propre au service RH ou envoyée en recommandé. Le préavis est d'1 mois pour les employés, 2 mois pour les agents de maîtrise et 3 mois pour les cadres. Il peut être réduit d'un commun accord avec le responsable. Le matériel et le badge sont restitués le dernier jour."
+    },
+    {
+      "question": "Existe-t-il une prime de cooptation ?",
+      "answer": "Oui. Un salarié qui recommande un candidat finalement embauché en CDI reçoit une prime de cooptation de 500 € brut, versée à la fin de la période d'essai du nouvel arrivant. Les managers ne sont pas éligibles pour les postes de leur propre équipe. Les candidatures se transmettent à recrutement@brumeval.example."
+    }
+  ]
+}

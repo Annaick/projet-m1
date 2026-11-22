@@ -1,9 +1,27 @@
 [
-  {
-    "id": "Q01",
-    "question": "Exemple : combien de jours de congés payés par an ?",
-    "reponse_attendue": "Exemple : 25 jours ouvrés.",
-    "sources_attendues": ["reglement-interieur.pdf"],
-    "dans_le_corpus": true
-  }
+  {"id": "Q01", "question": "Combien de jours de congés payés acquiert-on par an ?", "reponse_attendue": "25 jours ouvrés par an (2,08 jours par mois), sur la période du 1er juin au 31 mai.", "mots_cles": ["25"], "sources_attendues": ["conges-payes.pdf"], "dans_le_corpus": true},
+  {"id": "Q02", "question": "Combien de temps à l'avance faut-il poser ses congés ?", "reponse_attendue": "Au moins 15 jours avant, dans Kiosque ; le responsable a 5 jours ouvrés pour répondre.", "mots_cles": ["15"], "sources_attendues": ["conges-payes.pdf"], "dans_le_corpus": true},
+  {"id": "Q03", "question": "Peut-on reporter des congés non pris sur l'année suivante ?", "reponse_attendue": "Oui, dans la limite de 5 jours, à prendre avant le 31 décembre suivant.", "mots_cles": ["5"], "sources_attendues": ["conges-payes.pdf"], "dans_le_corpus": true},
+  {"id": "Q04", "question": "Combien de jours de RTT a un salarié non cadre ?", "reponse_attendue": "12 jours de RTT par an pour un non-cadre à 37 heures.", "mots_cles": ["12"], "sources_attendues": ["temps-de-travail-rtt.pdf"], "dans_le_corpus": true},
+  {"id": "Q05", "question": "Combien de jours de télétravail sont autorisés par semaine ?", "reponse_attendue": "Jusqu'à 2 jours par semaine, non reportables.", "mots_cles": ["2"], "sources_attendues": ["charte-teletravail.docx"], "dans_le_corpus": true},
+  {"id": "Q06", "question": "Quelle indemnité est versée pour le télétravail ?", "reponse_attendue": "2,50 € par jour télétravaillé, plafonnée à 50 € par mois.", "mots_cles": ["2,50"], "sources_attendues": ["charte-teletravail.docx"], "dans_le_corpus": true},
+  {"id": "Q07", "question": "Quel est le plafond de remboursement d'un repas à Paris ?", "reponse_attendue": "25 € par repas à Paris et en Île-de-France (20,50 € en province).", "mots_cles": ["25"], "sources_attendues": ["notes-de-frais.pdf"], "dans_le_corpus": true},
+  {"id": "Q08", "question": "Dans quel délai faut-il soumettre une note de frais ?", "reponse_attendue": "Dans les 30 jours suivant la dépense, dans Spendo ; refusée au-delà de 60 jours.", "mots_cles": ["30"], "sources_attendues": ["notes-de-frais.pdf"], "dans_le_corpus": true},
+  {"id": "Q09", "question": "Quelle part de la cotisation mutuelle est prise en charge par l'employeur ?", "reponse_attendue": "60 % (le salarié paie 40 %).", "mots_cles": ["60"], "sources_attendues": ["mutuelle-prevoyance.pdf"], "dans_le_corpus": true},
+  {"id": "Q10", "question": "Quelle est la valeur d'un titre-restaurant ?", "reponse_attendue": "9 € par titre, dont 55 % (4,95 €) payés par l'employeur.", "mots_cles": ["9"], "sources_attendues": ["titres-restaurant.txt"], "dans_le_corpus": true},
+  {"id": "Q11", "question": "A-t-on droit aux titres-restaurant les jours de télétravail ?", "reponse_attendue": "Oui, les jours de télétravail ouvrent droit à un titre-restaurant.", "mots_cles": ["oui"], "sources_attendues": ["titres-restaurant.txt", "charte-teletravail.docx"], "dans_le_corpus": true},
+  {"id": "Q12", "question": "À quelle heure et où a lieu l'accueil du premier jour ?", "reponse_attendue": "À 9 h au siège, 14 rue des Embruns à Nantes.", "mots_cles": ["9"], "sources_attendues": ["onboarding-nouvel-arrivant.docx"], "dans_le_corpus": true},
+  {"id": "Q13", "question": "Quelle est la longueur minimale d'un mot de passe ?", "reponse_attendue": "12 caractères minimum, avec majuscules, minuscules, chiffres et caractère spécial.", "mots_cles": ["12"], "sources_attendues": ["charte-informatique.pdf"], "dans_le_corpus": true},
+  {"id": "Q14", "question": "Je ne reçois pas la notification sur mon téléphone pour me connecter au VPN, que faire ?", "reponse_attendue": "Vérifier que le téléphone a du réseau, ouvrir Authenticator et saisir le code à 6 chiffres affiché.", "mots_cles": ["6 chiffres"], "sources_attendues": ["vpn-acces-distant.md"], "dans_le_corpus": true},
+  {"id": "Q15", "question": "Qui contacter en cas de panne informatique ?", "reponse_attendue": "Le support via le portail Assist, le poste 4400 (8 h-18 h) ou helpdesk@brumeval.example.", "mots_cles": ["4400"], "sources_attendues": ["support-informatique.txt"], "dans_le_corpus": true},
+  {"id": "Q16", "question": "Quels équipements de protection sont obligatoires dans les entrepôts ?", "reponse_attendue": "Chaussures de sécurité, gilet haute visibilité, gants de manutention, et casque dans les zones de stockage en hauteur.", "mots_cles": ["gilet"], "sources_attendues": ["securite-entrepots.pdf"], "dans_le_corpus": true},
+  {"id": "Q17", "question": "Dans quel délai faut-il prévenir son responsable après un accident du travail ?", "reponse_attendue": "Dans les 24 heures, sauf impossibilité absolue.", "mots_cles": ["24"], "sources_attendues": ["accident-du-travail.docx"], "dans_le_corpus": true},
+  {"id": "Q18", "question": "Combien de jours de congé a-t-on pour son mariage ?", "reponse_attendue": "5 jours ouvrés pour le mariage ou le PACS du salarié.", "mots_cles": ["5"], "sources_attendues": ["absences-evenements-familiaux.docx"], "dans_le_corpus": true},
+  {"id": "Q19", "question": "Quand le salaire est-il versé ?", "reponse_attendue": "Le dernier jour ouvré du mois, par virement.", "mots_cles": ["dernier jour"], "sources_attendues": ["Mémo paie"], "dans_le_corpus": true},
+  {"id": "Q20", "question": "Quel est le préavis de démission pour un cadre ?", "reponse_attendue": "3 mois pour les cadres (1 mois employés, 2 mois agents de maîtrise).", "mots_cles": ["3 mois"], "sources_attendues": ["Comment démissionner et quel est le préavis ?"], "dans_le_corpus": true},
+  {"id": "Q21", "question": "Comment réserver une salle de réunion ?", "reponse_attendue": null, "mots_cles": [], "sources_attendues": [], "dans_le_corpus": false},
+  {"id": "Q22", "question": "Y a-t-il une crèche d'entreprise ?", "reponse_attendue": null, "mots_cles": [], "sources_attendues": [], "dans_le_corpus": false},
+  {"id": "Q23", "question": "Quel est le salaire d'un cariste chez Brumeval ?", "reponse_attendue": null, "mots_cles": [], "sources_attendues": [], "dans_le_corpus": false},
+  {"id": "Q24", "question": "Peut-on venir au bureau avec son chien ?", "reponse_attendue": null, "mots_cles": [], "sources_attendues": [], "dans_le_corpus": false},
+  {"id": "Q25", "question": "Les intérimaires ont-ils droit aux jours de RTT ?", "reponse_attendue": null, "mots_cles": [], "sources_attendues": [], "dans_le_corpus": false, "note": "Question piège : les intérimaires et les RTT sont mentionnés dans le corpus, mais jamais ensemble."}
 ]

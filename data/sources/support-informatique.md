@@ -1,0 +1,32 @@
+---
+title: Support informatique - qui contacter
+format: txt
+---
+SUPPORT INFORMATIQUE : QUI CONTACTER ET COMMENT
+
+1. LE PORTAIL ASSIST
+Toute demande ou panne informatique se déclare d'abord sur le portail Assist (assist.brumeval.example), accessible depuis l'intranet, même sans VPN. Un ticket permet de suivre la demande et de garder une trace.
+
+2. TÉLÉPHONE
+Le support répond au poste 4400 (depuis l'extérieur : 02 40 00 44 00, numéro fictif) du lundi au vendredi de 8 h à 18 h.
+En dehors de ces horaires, une astreinte informatique est assurée pour les sites logistiques uniquement (pannes bloquant l'expédition), joignable via le chef d'équipe de permanence.
+
+3. COURRIEL
+helpdesk@brumeval.example, pour les demandes non urgentes. Un ticket est créé automatiquement.
+
+4. PRIORITÉS ET DÉLAIS DE PRISE EN CHARGE
+- P1, bloquant pour un site entier (réseau, logiciel de gestion d'entrepôt) : prise en charge en 30 minutes.
+- P2, bloquant pour une personne (poste en panne, compte verrouillé) : 2 heures.
+- P3, gênant mais contournable (imprimante, lenteur) : 1 jour ouvré.
+- P4, demande (installation de logiciel, accès à un dossier, matériel) : 3 jours ouvrés.
+
+5. AVANT D'APPELER
+- Redémarrer l'ordinateur règle une grande partie des problèmes.
+- Noter le message d'erreur exact ou faire une capture d'écran.
+- Indiquer le numéro d'inventaire collé sous l'ordinateur (format BRU-XXXXX).
+
+6. COMPTE VERROUILLÉ OU MOT DE PASSE OUBLIÉ
+La réinitialisation se fait en libre-service sur la page « Mot de passe oublié » de l'écran de connexion, grâce à la double authentification. Si cela échoue, appeler le 4400.
+
+7. SÉCURITÉ
+Perte ou vol de matériel, courriel suspect déjà ouvert, comportement anormal du poste : appeler immédiatement le 4400, en priorité P1.
