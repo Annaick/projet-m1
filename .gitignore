@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Configuration locale et secrets
+.env
+
+# Données générées localement (SQLite, Qdrant, fichiers importés)
+storage/
+
+# Résultats d'évaluation bruts (garder seulement ceux qu'on commit volontairement)
+eval/results/*
+!eval/results/.gitkeep
+
+# Éditeurs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml

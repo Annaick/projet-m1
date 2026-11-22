@@ -1,0 +1,9 @@
+[
+  {
+    "id": "Q01",
+    "question": "Exemple : combien de jours de congés payés par an ?",
+    "reponse_attendue": "Exemple : 25 jours ouvrés.",
+    "sources_attendues": ["reglement-interieur.pdf"],
+    "dans_le_corpus": true
+  }
+]
