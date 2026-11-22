@@ -9,6 +9,7 @@ Tout tourne sur la machine : aucun service payant, aucune API cloud.
 
 - Plan complet du projet (cadrage, maquettes, architecture, planning) : [`docs/plan-projet.pdf`](docs/plan-projet.pdf)
 - Architecture détaillée (modèle de données, API, flux) : [`docs/architecture.md`](docs/architecture.md)
+- Maquettes de l'interface (HTML à ouvrir dans un navigateur) et charte : [`docs/design/`](docs/design/README.md)
 
 ## Fonctionnalités (MVP)
 
@@ -46,7 +47,7 @@ frontend/     interface Streamlit
   api_client.py   appels à l'API
 eval/         25 questions de référence + script d'évaluation
 data/corpus/  documents de la société fictive (jeu de test)
-docs/         plan du projet, architecture
+docs/         plan du projet, architecture, maquettes (design/)
 ```
 
 ## Installation

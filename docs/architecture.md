@@ -1,6 +1,6 @@
-# Architecture — proposition v1 (à discuter)
+# Architecture — v1 validée
 
-Statut : **proposition** de Claude, 2026-11-22. Rien n'est figé tant que ce n'est pas dans `DECISIONS.md`.
+Statut : **validée par l'équipe le 22/11/2026**. Toute évolution se discute avant d'être appliquée ici.
 
 ## 1. Vue d'ensemble
 

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paramètres de l'IA — Assistant RAG</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1A1D23;background:#F7F8FA}
+a{color:#3B5BDB}a:hover{color:#2B46B0}
+.nav{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border-radius:8px;color:#1A1D23;text-decoration:none;font-size:14px}
+.nav:hover{background:#E2E5EC;color:#1A1D23}
+.ico{width:18px;height:18px;flex:none}
+.recent{display:block;padding:8px 10px;border-radius:8px;color:#1A1D23;text-decoration:none;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.recent:hover{background:#E2E5EC;color:#1A1D23}
+.lbl{font-size:14px;font-weight:600}
+.help{font-size:13px;color:#5A6170;margin:0}
+.field{width:100%;box-sizing:border-box;border:1px solid #D5D9E1;border-radius:10px;background:#FFFFFF;font:inherit;font-size:14px;color:#1A1D23;padding:10px 12px}
+.seg{height:36px;padding:0 14px;border:none;border-radius:8px;background:transparent;font:inherit;font-size:13px;color:#3F4654;cursor:pointer}
+</style>
+</head>
+<body>
+<div style="min-height: 1180px; display: flex; flex-wrap: wrap; background: #F7F8FA">
+
+  <nav aria-label="Navigation principale" style="flex: 1 1 260px; box-sizing: border-box; background: #EEF0F4; border-right: 1px solid #E1E4EA; padding: 16px 12px; display: flex; flex-direction: column; gap: 2px">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 4px 10px 18px">
+      <div aria-hidden="true" style="width: 30px; height: 30px; border-radius: 8px; background: #3B5BDB; color: #FFFFFF; display: flex; align-items: center; justify-content: center">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"></path><path d="M8 7h8M8 11h6"></path></svg>
+      </div>
+      <span style="font-weight: 700; font-size: 16px">Assistant RAG</span>
+    </div>
+    <a class="nav" href="index.html">
+      <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+      Nouvelle conversation
+    </a>
+    <a class="nav" href="index.html">
+      <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      Rechercher
+    </a>
+    <a class="nav" href="base-de-connaissances.html">
+      <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"></path><path d="M8 7h8"></path></svg>
+      Base de connaissances
+    </a>
+    <a class="nav" href="questions-sans-reponse.html">
+      <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"></path></svg>
+      <span style="flex: 1">Questions sans réponse</span>
+      <span style="min-width: 22px; height: 20px; padding: 0 6px; box-sizing: border-box; border-radius: 999px; background: #FDE9D7; color: #8A3B00; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center">4</span>
+    </a>
+    <div style="padding: 20px 10px 6px; font-size: 12px; font-weight: 600; color: #5A6170">Récentes</div>
+    
+      <a class="recent" href="conversation.html">Congés et absences</a>
+    
+      <a class="recent" href="conversation.html">Remboursement des notes de frais</a>
+    
+      <a class="recent" href="conversation.html">Connexion au VPN depuis chez soi</a>
+    
+      <a class="recent" href="conversation.html">Onboarding d’un nouvel arrivant</a>
+    
+      <a class="recent" href="conversation.html">Horaires et télétravail</a>
+    
+      <a class="recent" href="conversation.html">Commande de matériel informatique</a>
+    
+      <a class="recent" href="conversation.html">Mutuelle et prévoyance</a>
+    
+      <a class="recent" href="conversation.html">Politique de mots de passe</a>
+    
+    <div style="flex: 1; min-height: 24px"></div>
+    <div style="border-top: 1px solid #E1E4EA; padding-top: 10px; display: flex; flex-direction: column; gap: 2px">
+      <a class="nav" href="parametres.html" aria-current="page" style="background: #E0E5F5; font-weight: 600">
+        <svg class="ico" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>
+        Paramètres de l'IA
+      </a>
+      <div style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; font-size: 12px; color: #5A6170">
+        <span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #1E8E5A"></span>
+        Ollama connecté · gemma3:4b
+      </div>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 32px 40px 48px">
+    <form style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+      <header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <h1 style="margin: 0; font-size: 26px; font-weight: 600">Paramètres de l'IA</h1>
+          <p class="help">Comment l'assistant se comporte, quel modèle il utilise et comment il cherche dans la base.</p>
+        </div>
+        <div style="display: flex; gap: 8px">
+          <button type="button" style="height: 40px; padding: 0 16px; border: 1px solid #D5D9E1; border-radius: 10px; background: #FFFFFF; font: inherit; font-size: 14px; color: #1A1D23; cursor: pointer">Rétablir par défaut</button>
+          <button type="button" style="height: 40px; padding: 0 16px; border: none; border-radius: 10px; background: #3B5BDB; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Enregistrer</button>
+        </div>
+      </header>
+
+      <section aria-labelledby="s-perso" style="border: 1px solid #E1E4EA; border-radius: 12px; background: #FFFFFF; padding: 24px; display: flex; flex-direction: column; gap: 20px">
+        <h2 id="s-perso" style="margin: 0; font-size: 17px; font-weight: 600">Personnalité</h2>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span class="lbl" id="tone-l">Ton</span>
+          <div role="radiogroup" aria-labelledby="tone-l" style="display: inline-flex; align-self: flex-start; gap: 2px; padding: 3px; border-radius: 10px; background: #EEF0F4">
+            <button type="button" role="radio" aria-checked="true" class="seg" style="background: #FFFFFF; color: #1A1D23; font-weight: 600; box-shadow: 0 1px 2px rgba(20, 24, 33, 0.08)">Professionnel</button>
+            <button type="button" role="radio" aria-checked="false" class="seg">Neutre</button>
+            <button type="button" role="radio" aria-checked="false" class="seg">Chaleureux</button>
+            <button type="button" role="radio" aria-checked="false" class="seg">Concis</button>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label class="lbl" for="directives">Directives générales</label>
+          <p class="help">Règles ajoutées à chaque réponse. Une par ligne.</p>
+          <textarea id="directives" class="field" rows="4" style="resize: vertical; line-height: 1.6">Réponds toujours en français.
+Cite systématiquement tes sources.
+Si l'information n'est pas dans la base, dis-le clairement et ne l'invente pas.
+Oriente vers le service RH pour les cas individuels.</textarea>
+        </div>
+      </section>
+
+      <section aria-labelledby="s-prompt" style="border: 1px solid #E1E4EA; border-radius: 12px; background: #FFFFFF; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+          <h2 id="s-prompt" style="margin: 0; font-size: 17px; font-weight: 600"><label for="sysprompt">Prompt système</label></h2>
+          <span class="help">Variables : {contexte}, {question}</span>
+        </div>
+        <textarea id="sysprompt" class="field" rows="8" style="resize: vertical; font-family: ui-monospace, Consolas, monospace; font-size: 13px; line-height: 1.6; background: #FAFBFC">Tu es l'assistant documentaire interne de l'entreprise.
+Tu réponds uniquement à partir des extraits fournis ci-dessous, numérotés [1], [2]…
+Après chaque affirmation, indique entre crochets le numéro de l'extrait qui la justifie.
+Si aucun extrait ne permet de répondre, réponds exactement :
+« Je ne trouve pas cette information dans la base de connaissances. »
+
+Extraits :
+{contexte}
+
+Question : {question}</textarea>
+      </section>
+
+      <section aria-labelledby="s-model" style="border: 1px solid #E1E4EA; border-radius: 12px; background: #FFFFFF; padding: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px">
+        <h2 id="s-model" style="grid-column: 1 / -1; margin: 0; font-size: 17px; font-weight: 600">Modèle</h2>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label class="lbl" for="model">Modèle de langage</label>
+          <select id="model" class="field" style="height: 42px">
+            <option>gemma3:4b</option>
+            <option>qwen2.5:3b</option>
+            <option>llama3.2:3b</option>
+          </select>
+          <p class="help">Modèles installés dans Ollama.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; justify-content: space-between"><label class="lbl" for="temp">Température</label><span style="font-size: 14px; font-weight: 600">0,2</span></div>
+          <input id="temp" type="range" min="0" max="1" step="0.1" value="0.2" style="accent-color: #3B5BDB; height: 42px">
+          <p class="help">Bas = réponses fidèles et stables. Haut = plus créatif, plus de risque d'invention.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="s-search" style="border: 1px solid #E1E4EA; border-radius: 12px; background: #FFFFFF; padding: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 24px">
+        <h2 id="s-search" style="grid-column: 1 / -1; margin: 0; font-size: 17px; font-weight: 600">Recherche dans la base</h2>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label class="lbl" for="topk">Nombre d'extraits utilisés (top-k)</label>
+          <input id="topk" type="number" min="1" max="10" value="4" class="field" style="height: 42px">
+          <p class="help">Extraits les plus proches transmis au modèle.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; justify-content: space-between"><label class="lbl" for="seuil">Seuil de pertinence</label><span style="font-size: 14px; font-weight: 600">0,55</span></div>
+          <input id="seuil" type="range" min="0" max="1" step="0.05" value="0.55" style="accent-color: #3B5BDB; height: 42px">
+          <p class="help">Sous ce score, l'extrait est ignoré. Si aucun ne passe, l'assistant répond qu'il ne sait pas.</p>
+        </div>
+        <label style="grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 4px; cursor: pointer">
+          <span style="display: flex; flex-direction: column; gap: 4px">
+            <span class="lbl">Enregistrer les questions sans réponse</span>
+            <span class="help">Elles apparaissent dans « Questions sans réponse » pour compléter la base.</span>
+          </span>
+          <input type="checkbox" checked="checked" style="width: 20px; height: 20px; accent-color: #3B5BDB">
+        </label>
+      </section>
+
+    </form>
+  </main>
+</div>
+</body>
+</html>
