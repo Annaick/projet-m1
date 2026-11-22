@@ -10,6 +10,7 @@ Tout tourne sur la machine : aucun service payant, aucune API cloud.
 - Plan complet du projet (cadrage, maquettes, architecture, planning) : [`docs/plan-projet.pdf`](docs/plan-projet.pdf)
 - Architecture détaillée (modèle de données, API, flux) : [`docs/architecture.md`](docs/architecture.md)
 - Maquettes de l'interface (HTML à ouvrir dans un navigateur) et charte : [`docs/design/`](docs/design/README.md)
+- Backlog du MVP (10 lots) : [`docs/backlog.md`](docs/backlog.md)
 
 ## Fonctionnalités (MVP)
 
@@ -38,16 +39,21 @@ backend/      API FastAPI + moteur RAG
   app/
     main.py       application FastAPI
     config.py     réglages (lus depuis .env)
-    routers/      routes : conversations, knowledge, settings, gaps
-    rag/          extraction, découpage, embeddings, Qdrant, recherche, génération
-  tests/
+    models.py     tables SQLite (SQLModel)
+    routers/      routes : knowledge, conversations, admin (paramètres, lacunes)
+    rag/          extraction, découpage, embeddings, Qdrant, BM25, réponse
+  tests/          tests (LLM et embeddings simulés : pas besoin d'Ollama)
 frontend/     interface Streamlit
   app.py          point d'entrée et navigation
-  views/          accueil/chat, base de connaissances, paramètres
+  ui.py           thème, barre latérale, composants communs
+  views/          chat, recherche, base de connaissances, questions sans réponse, paramètres
   api_client.py   appels à l'API
-eval/         25 questions de référence + script d'évaluation
-data/corpus/  documents de la société fictive (jeu de test)
-docs/         plan du projet, architecture, maquettes (design/)
+eval/         25 questions de référence + banc d'évaluation (run_eval.py)
+data/
+  sources/        textes Markdown du corpus (à modifier ici)
+  corpus/         documents générés (PDF, DOCX, TXT, MD) : build_corpus.py
+  knowledge.json  texte riche et FAQ de démonstration
+docs/         plan du projet, architecture, maquettes (design/), backlog
 ```
 
 ## Installation
@@ -70,6 +76,9 @@ pip install -r backend/requirements.txt -r frontend/requirements.txt
 cp .env.example .env      # puis ajuster si besoin
 ```
 
+Sous Windows, gardez `127.0.0.1` dans les URL du `.env` : avec `localhost`, chaque appel perd environ 2 s
+(tentative IPv6 avant IPv4).
+
 ## Lancement
 
 Deux terminaux, venv activé, depuis la racine du dépôt :
@@ -83,7 +92,30 @@ streamlit run frontend/app.py
 ```
 
 Ollama doit tourner en arrière-plan (il démarre tout seul après installation sur Windows).
-`GET http://localhost:8000/health` indique si l'API voit bien Ollama.
+`GET http://127.0.0.1:8000/health` indique si l'API voit bien Ollama et les deux modèles.
+
+### Charger le corpus de démonstration
+
+Avec l'API lancée :
+
+```bash
+python data/load_corpus.py           # 20 documents de la société fictive Brumeval + texte riche + FAQ
+python data/load_corpus.py --reset   # repartir d'une base vide
+```
+
+Les documents se modifient dans `data/sources/*.md`, puis `python data/build_corpus.py` régénère `data/corpus/`.
+
+## Évaluation
+
+Qdrant en mode local n'accepte qu'un processus à la fois : **arrêtez l'API** avant de lancer le banc.
+
+```bash
+python eval/run_eval.py --retrieval-only   # Recall@k et choix du seuil, sans LLM (quelques secondes)
+python eval/run_eval.py                    # + génération : LLM seul, BM25 + LLM, RAG (≈ 75 appels au LLM)
+```
+
+Les résultats (`rapport.md`, `resume.json`, `reponses.csv`) sont écrits dans `eval/results/<date>/`.
+Détails des métriques : [`eval/README.md`](eval/README.md).
 
 ## Tests
 

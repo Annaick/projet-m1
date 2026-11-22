@@ -7,8 +7,19 @@ import httpx
 from app.config import settings
 
 
+KEEP_ALIVE = "30m"  # garde le modèle en mémoire entre deux questions
+
+
 class OllamaError(Exception):
     pass
+
+
+def context_size(messages: list[dict]) -> int:
+    """Fenêtre de contexte suffisante pour le prompt (~3,5 caractères par token) + la réponse.
+
+    Par défaut Ollama tronque silencieusement au-delà de sa fenêtre : des extraits seraient perdus."""
+    needed = sum(len(m["content"]) for m in messages) / 3.5 + 1024
+    return int(min(16384, max(4096, -(-needed // 2048) * 2048)))
 
 
 def _post(path: str, payload: dict, timeout: float = 300) -> dict:
@@ -23,13 +34,19 @@ def _post(path: str, payload: dict, timeout: float = 300) -> dict:
 def embed(texts: list[str], batch_size: int = 16) -> list[list[float]]:
     vectors: list[list[float]] = []
     for i in range(0, len(texts), batch_size):
-        data = _post("/api/embed", {"model": settings.embedding_model, "input": texts[i : i + batch_size]})
+        data = _post("/api/embed", {"model": settings.embedding_model, "input": texts[i : i + batch_size], "keep_alive": KEEP_ALIVE})
         vectors.extend(data["embeddings"])
     return vectors
 
 
 def chat_stream(messages: list[dict], model: str, temperature: float) -> Iterator[str]:
-    payload = {"model": model, "messages": messages, "stream": True, "options": {"temperature": temperature}}
+    payload = {
+        "model": model,
+        "messages": messages,
+        "stream": True,
+        "keep_alive": KEEP_ALIVE,
+        "options": {"temperature": temperature, "num_ctx": context_size(messages)},
+    }
     try:
         with httpx.stream("POST", f"{settings.ollama_url}/api/chat", json=payload, timeout=600) as response:
             response.raise_for_status()

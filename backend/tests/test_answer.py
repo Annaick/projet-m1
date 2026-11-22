@@ -50,3 +50,11 @@ def test_bm25_trouve_le_bon_fragment(session):
         index_source(session, source.id)
     results = BM25Index(session).search("combien de jours de congés ?", top_k=2)
     assert results[0].title == "Congés" and len(results) == 1
+
+
+def test_fenetre_de_contexte_adaptee():
+    from app.rag.ollama import context_size
+
+    assert context_size([{"content": "court"}]) == 4096
+    assert context_size([{"content": "x" * 20000}]) == 8192
+    assert context_size([{"content": "x" * 200000}]) == 16384

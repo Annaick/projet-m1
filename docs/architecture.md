@@ -90,20 +90,32 @@ Une FAQ = un seul fragment « Q : … R : … ». Suppression d'une source = sup
 + ligne `knowledge_gap` → sinon prompt (paramètres IA + fragments numérotés [1]…[k] + historique court)
 → Ollama en streaming → extraction des [n] cités → lignes `citation` → le front affiche les bulles.
 
-## 5. API (premier jet)
+## 5. API (implémentée, documentation interactive sur `/docs`)
 
 ```
 GET/POST        /conversations?q=          PATCH/DELETE /conversations/{id}   (q = recherche titre/contenu)
-GET             /conversations/{id}/messages
-POST            /conversations/{id}/messages        → réponse streamée + citations
-GET             /knowledge/summary                  → compteurs par type (cartes façon GoHighLevel)
-GET/POST        /knowledge/sources?type=            (POST fichier = multipart)
-GET/DELETE      /knowledge/sources/{id}
+GET             /conversations/{id}/messages        → messages + citations (titre, page, score)
+POST            /conversations/{id}/messages        → réponse streamée en NDJSON (voir ci-dessous)
+GET             /knowledge/summary                  → compteurs par type et par état, sources récentes
+GET             /knowledge/sources?type=&q=
+POST            /knowledge/sources/files            (multipart, plusieurs fichiers)
+POST            /knowledge/sources/richtext         {title, content}
+POST            /knowledge/sources/faq              {question, answer}
+GET/PUT/DELETE  /knowledge/sources/{id}             (PUT : texte riche ou FAQ, réindexe)
+POST            /knowledge/sources/{id}/reindex
+GET             /knowledge/sources/{id}/chunks      → fragments indexés
 GET             /chunks/{id}                        → extrait affiché au clic sur une bulle
-GET/PUT         /settings
-GET/PATCH       /gaps
-GET             /health                             → état Ollama / Qdrant / SQLite
+GET/PUT         /settings          GET /settings/default-prompt
+GET             /gaps?resolved=    PATCH /gaps/{id} {resolved}
+GET             /health                             → état Ollama (modèles manquants) et Qdrant
 ```
+
+L'indexation tourne en tâche de fond après l'envoi : la source passe `pending → indexing → indexed | error`.
+
+**Flux de réponse (NDJSON, une ligne JSON par événement)** :
+`user` (message enregistré) → `sources` (extraits retenus) → `token`… (texte au fil de l'eau) →
+`done` (`message_id`, `answered`, `citations`, `latency_ms`) ou `error` (Ollama injoignable).
+Sans extrait au-dessus du seuil, la réponse « pas dans la base » est renvoyée sans appeler le LLM.
 
 ## 6. Évaluation (le livrable qui pèse le plus)
 
